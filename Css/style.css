@@ -4,7 +4,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-html{
+html {
   overflow: hidden;
 }
 body {
@@ -53,7 +53,7 @@ nav ul {
 .favNavStopIcon {
   margin: 8px;
   filter: invert(1);
-  opacity: 0;
+  display: none !important;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
@@ -102,6 +102,28 @@ nav ul {
   overflow: auto;
   scroll-behavior: smooth;
 }
+
+/* Add a class for the shuffle animation */
+.shuffle-animation {
+  animation: shuffle 2s ease-in-out;
+}
+
+/* Define the shuffle animation keyframes */
+@keyframes shuffle {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* width */
 .allsongslistContainer::-webkit-scrollbar {
   width: 15px;
@@ -126,6 +148,50 @@ nav ul {
   background: darkolivegreen;
   box-shadow: inset 0 0 15px rgba(8, 207, 8, 0.5);
 }
+
+.musicCasette {
+  display: none;
+  position: absolute;
+  right: 12rem;
+  top: 12rem;
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  background-color: black;
+  border: 3px solid whitesmoke;
+  justify-content: center;
+  align-items: center;
+}
+.playingToneArm {
+  position: absolute;
+  bottom: 4px;
+  left: 23px;
+  height: 150px;
+  width: 150px;
+  z-index: 5;
+}
+.playingSongCover {
+  position: absolute;
+  box-shadow: 3px 3px 18px 7px rgba(114, 233, 2, 0.699);
+  height: 200px;
+  width: 200px;
+  border: 2px solid white;
+  border-radius: 50%;
+  margin: 0 10px;
+  /* object-fit: cover; */
+  /* clip-path: circle(50% at center); */
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .songItem {
   display: flex;
   justify-content: space-around;
@@ -299,15 +365,15 @@ nav ul {
   display: flex;
   align-items: center;
   margin-bottom: 2px;
-  transition: opacity 0.5s ease;
+  transition: display 0.5s ease;
 }
 #playingIcon {
   height: 40px;
   width: 120px;
   filter: hue-rotate(50deg);
   margin: 0 10px;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  display: none;
+  transition: display 0.5s ease;
 }
 .playingBarSongTitle {
   color: white;
@@ -315,32 +381,28 @@ nav ul {
   font-family: "Edu NSW ACT Foundation", cursive;
   font-size: 1.2rem;
   margin: 0 10px;
-  opacity: 0;
+  display: none;
 }
-.playingBarSongCover {
-  height: 53px;
-  width: 85px;
-  border: 2px solid white;
-  border-radius: 10px;
-  margin: 0 10px;
-  opacity: 0;
-}
+
 .otherFeaturesContent {
   position: absolute;
   bottom: 0;
   left: 1000px;
   z-index: 3;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  display: none;
+  transition: display 0.5s ease;
 }
 #loopSong {
   filter: invert(1);
   color: black;
-  opacity: 0;
+  display: none;
 }
 #autoPlay {
-  opacity: 0;
+  display: none;
 }
+/* #shuffleList {
+  display: none;
+} */
 .favGreenIcon {
   filter: none !important;
   color: forestgreen !important;
